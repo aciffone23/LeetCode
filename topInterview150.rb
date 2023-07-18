@@ -34,3 +34,15 @@ def remove_duplicates(nums)
   return k
   
 end
+
+def remove_element(nums, val)
+
+  nums.each do |ele|
+      if ele == val 
+          nums.delete(ele)
+      end
+  end
+  k = nums.length 
+  
+  return k
+end
