@@ -35,14 +35,12 @@ def remove_duplicates(nums)
   
 end
 
-def remove_element(nums, val)
-
-  nums.each do |ele|
-      if ele == val 
-          nums.delete(ele)
-      end
+def majority_element(nums)
+  newHash = Hash.new(0)
+  nums.each do |num| 
+      newHash[num] += 1
   end
-  k = nums.length 
-  
-  return k
+
+  grabele = newHash.select {|k,v| v >= nums.length/2.0}
+  grabele.keys.first
 end
