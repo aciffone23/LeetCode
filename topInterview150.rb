@@ -20,3 +20,17 @@ def remove_element(nums, val)
     
     return k
 end
+
+def remove_duplicates(nums)
+  newArr = []
+
+  nums.each do |ele|
+      if !newArr.include?(ele)
+          newArr << ele
+      end
+  end
+  nums.clear.concat(newArr)
+  k = newArr.length
+  return k
+  
+end
