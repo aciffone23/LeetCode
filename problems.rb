@@ -8,3 +8,15 @@ def h_index(citations)
     end
     return h_index
 end
+
+def remove_element(nums, val)
+
+    nums.each do |ele|
+        if ele == val 
+            nums.delete(ele)
+        end
+    end
+    k = nums.length 
+    
+    return k
+end
