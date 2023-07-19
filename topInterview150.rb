@@ -44,3 +44,30 @@ def majority_element(nums)
   grabele = newHash.select {|k,v| v >= nums.length/2.0}
   grabele.keys.first
 end
+
+def roman_to_int(s)
+  romans = {
+      "I" => 1,
+      "V" => 5,
+      "X" => 10,
+      "L" => 50,
+      "C" => 100, 
+      "D" => 500, 
+      "M" => 1000
+  }
+
+  number = 0
+
+  s.each_char.with_index do |char,i|
+      if char == 'I' && (s[i + 1] == 'V' || s[i + 1] == 'X')
+          number -= 1
+      elsif char == 'X' && (s[i + 1] == 'L' || s[i + 1] == 'C')
+          number -= 10
+      elsif char == 'C' && (s[i + 1] == 'D' || s[i + 1] == 'M')
+          number -= 100
+      else
+          number += romans[char]
+      end
+  end
+  return number
+end
