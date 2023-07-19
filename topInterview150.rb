@@ -96,3 +96,26 @@ def str_str(haystack, needle)
       return haystack.index(needle)
   end   
 end
+
+def can_construct(ransom_note, magazine)
+  if magazine.length < ransom_note.length 
+      return false
+  end
+  noteHash = Hash.new(0)
+
+  ransom_note.each_char do |char|
+      noteHash[char] += 1
+  end
+
+  magazine.each_char do |char|
+      if noteHash.include?(char)
+          noteHash[char] -= 1
+      end
+  end
+  noteHash.each do |k,v|
+      if v > 0
+          return false
+      end
+  end
+  return true
+end
