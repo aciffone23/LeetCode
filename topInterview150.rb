@@ -119,3 +119,20 @@ def can_construct(ransom_note, magazine)
   end
   return true
 end
+
+
+def is_isomorphic(s, t)
+  sHash = {}
+  tHash = {}
+  i = 0 
+  while i < s.length 
+      if (sHash.has_key?(s[i]) && sHash[s[i]] != t[i]) ||
+          (tHash.has_key?(t[i]) && tHash[t[i]] != s[i])
+          return false
+      end
+      sHash[s[i]] = t[i]
+      tHash[t[i]] = s[i]
+      i += 1
+  end
+  return true 
+end
