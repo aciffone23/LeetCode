@@ -71,3 +71,7 @@ def roman_to_int(s)
   end
   return number
 end
+
+def length_of_last_word(s)
+  s.split(" ").last.length  
+end
