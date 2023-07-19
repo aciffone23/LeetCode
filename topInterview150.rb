@@ -75,3 +75,16 @@ end
 def length_of_last_word(s)
   s.split(" ").last.length  
 end
+
+def longest_common_prefix(strs)
+    newStr = ""
+    strs[0].each_char.with_index do |char,i|
+        strs.each do |s|
+            if s[i] != char 
+                return newStr
+            end
+        end
+        newStr += char
+    end
+    return newStr
+end
