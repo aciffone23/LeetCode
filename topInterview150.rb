@@ -88,3 +88,11 @@ def longest_common_prefix(strs)
     end
     return newStr
 end
+
+def str_str(haystack, needle)
+  if !haystack.include?(needle)
+      return -1  
+  else
+      return haystack.index(needle)
+  end   
+end
