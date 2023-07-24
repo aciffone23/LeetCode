@@ -182,3 +182,11 @@ def is_anagram(s, t)
   return true
 
 end
+
+def is_palindrome(x)
+  toS = x.to_s
+  if toS == toS.reverse 
+      return true
+  end
+  return false
+end
