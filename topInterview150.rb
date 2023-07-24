@@ -136,3 +136,26 @@ def is_isomorphic(s, t)
   end
   return true 
 end
+
+def word_pattern(pattern, s)
+  newHash = {}
+  words = s.split(" ")
+  used = Set.new
+
+  if pattern.split("").length != words.length
+      return false
+  end
+
+  pattern.each_char.with_index do |char, i|
+      if newHash.has_key?(char) && newHash[char] != words[i]
+          return false
+      else
+          if used.include?(words[i]) && newHash[char] != words[i]
+              return false
+          end
+          newHash[char] = words[i]
+          used << words[i]
+      end
+  end
+  return true
+end
