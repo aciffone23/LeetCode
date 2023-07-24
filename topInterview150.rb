@@ -190,3 +190,14 @@ def is_palindrome(x)
   end
   return false
 end
+
+def plus_one(digits)
+  # if digits[-1] == 9
+  #     int = digits.join("").to_i
+  #     digits = (int + 1).digits.reverse
+  # else
+  #     digits[-1] = digits[-1] + 1
+  # end
+  # return digits
+  (digits.join.to_i + 1).digits.reverse
+end
