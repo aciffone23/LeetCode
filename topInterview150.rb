@@ -159,3 +159,26 @@ def word_pattern(pattern, s)
   end
   return true
 end
+
+def is_anagram(s, t)
+  sHash = Hash.new(0)
+  tHash = Hash.new(0)
+
+  if s.length != t.length
+      return false
+  end
+
+  s.each_char do |char|
+      sHash[char] += 1
+  end
+
+  t.each_char do |char|
+      tHash[char] += 1
+  end
+
+  if sHash != tHash
+      return false
+  end
+  return true
+
+end
