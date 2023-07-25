@@ -201,3 +201,23 @@ def plus_one(digits)
   # return digits
   (digits.join.to_i + 1).digits.reverse
 end
+
+def max_profit(prices)
+  maxProfit = 0 
+  i = 0
+  while i < prices.length - 1
+      if prices[i] > prices[i + 1]
+          i += 1
+      else 
+          profit = prices[i + 1] - prices[i]
+          j = i
+          until profit < 0 || j == prices.length - 1
+              j += 1
+              profit = prices[j] - prices[i]
+              maxProfit = [maxProfit, profit].max
+          end
+          i = j
+      end
+  end
+  return maxProfit
+end
