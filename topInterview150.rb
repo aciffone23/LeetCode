@@ -221,3 +221,28 @@ def max_profit(prices)
   end
   return maxProfit
 end
+
+# two pointer solution instead 
+def is_palindrome(s)
+  # alphabet = "abcdefghijklmnopqrstuvwxyz"
+  # newStr = ""
+  # s.each_char do |char|
+  #     if alphabet.include?(char.downcase) || char.to_i.to_s == char
+  #         newStr += char.downcase
+  #     end
+  # end
+  # newStr == newStr.reverse 
+
+  characters = s.downcase.chars.filter{ |char| ("a".."z").include?(char) || ("0".."9").include?(char)}
+  right = 0
+  left = letters.length - 1
+  while right <= left do
+    if letters[right] == letters[left]
+         right += 1
+         left -= 1
+     else
+         return false
+    end
+  end
+  true
+end
