@@ -263,3 +263,16 @@ def max_profit(prices)
   end
   return totalProfit
 end
+
+def reverse_words(s)
+  newStr = ''
+  words = s.split(" ")
+  (words.length - 1).downto(0) do |i|
+      if i == 0
+          newStr += words[i]
+      else 
+          newStr += words[i] + ' '
+      end
+  end
+  return newStr
+end
