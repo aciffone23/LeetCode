@@ -235,9 +235,9 @@ def is_palindrome(s)
 
   characters = s.downcase.chars.filter{ |char| ("a".."z").include?(char) || ("0".."9").include?(char)}
   right = 0
-  left = letters.length - 1
+  left = characters.length - 1
   while right <= left do
-    if letters[right] == letters[left]
+    if characters[right] == characters[left]
          right += 1
          left -= 1
      else
@@ -245,4 +245,21 @@ def is_palindrome(s)
     end
   end
   true
+end
+
+def max_profit(prices)
+  totalProfit = 0 
+  i = 0 
+  curProfit = 0
+  while i <= prices.length - 2
+      if prices[i] > prices[i + 1]
+          i += 1
+      else
+          curProfit = prices[i + 1] - prices[i]
+          i += 1
+      end
+      totalProfit += curProfit
+      curProfit = 0 
+  end
+  return totalProfit
 end
