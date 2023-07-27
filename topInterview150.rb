@@ -276,3 +276,12 @@ def reverse_words(s)
   end
   return newStr
 end
+
+def is_subsequence(s, t)
+  t.each_char do |char|
+      if char == s[0]
+          s.slice!(0)
+      end
+  end
+  s.empty?
+end
