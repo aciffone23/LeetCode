@@ -304,3 +304,28 @@ end
 def my_sqrt(x)
   (x ** 0.5).to_i
 end
+
+def longest_consecutive(nums)
+  longestSeq = 0
+  currentSeq = 1
+  i = 0
+  nums = nums.uniq.sort!
+  if nums.empty?
+      return 0
+  end
+  while i < nums.length - 1
+      if longestSeq > 0 && nums[i] + longestSeq == nums[longestSeq]
+          currentSeq = (longestSeq * 2) - 1
+          longestSet = currentSeq
+          i = currentSeq
+      elsif nums[i] + 1 == nums[i + 1]
+          currentSeq += 1
+          i += 1
+      else
+          longestSeq = [longestSeq, currentSeq].max
+          currentSeq = 1
+          i += 1
+      end
+  end
+  return longestSeq = [longestSeq,currentSeq].max
+end
