@@ -300,3 +300,7 @@ def is_happy(n)
   is_happy(newNum)
   
 end
+
+def my_sqrt(x)
+  (x ** 0.5).to_i
+end
