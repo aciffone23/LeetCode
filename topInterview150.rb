@@ -329,3 +329,19 @@ def longest_consecutive(nums)
   end
   return longestSeq = [longestSeq,currentSeq].max
 end
+
+def is_valid(s)
+  stack = []
+  hash = { ')' => '(', ']' => '[', '}' => '{'}
+
+  s.each_char do |char|
+      if !hash[char]
+          stack << char
+      elsif hash[char] == stack[-1]
+          stack.pop
+      else 
+          return false
+      end
+  end
+  stack.empty?
+end
