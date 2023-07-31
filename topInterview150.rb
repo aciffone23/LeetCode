@@ -356,3 +356,16 @@ def merge(nums1, m, nums2, n)
   end
   nums1.sort!
 end
+
+def can_jump(nums)
+  #greedy solution
+  goal = nums.length - 1
+
+  (nums.length - 1).downto(0) do |i|
+    if i + nums[i] >= goal 
+      goal = i
+    end
+  end
+
+  return goal == 0
+end
