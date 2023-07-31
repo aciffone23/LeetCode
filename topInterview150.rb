@@ -345,3 +345,14 @@ def is_valid(s)
   end
   stack.empty?
 end
+
+def merge(nums1, m, nums2, n)
+  n.times do 
+      nums1.pop
+  end
+  n.times do 
+      ele = nums2.pop
+      nums1.push(ele)
+  end
+  nums1.sort!
+end
