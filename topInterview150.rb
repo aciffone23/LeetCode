@@ -456,3 +456,18 @@ def int_to_roman(num)
 
   return str
 end
+
+def two_sum(numbers, target)
+  i = 0 
+  j = numbers.length - 1
+
+  while i < numbers.length 
+      if numbers[i] + numbers[j] == target
+          return i + 1,j + 1
+      elsif numbers[i] + numbers[j] > target
+          j -= 1
+      else
+          i += 1
+      end
+  end
+end
