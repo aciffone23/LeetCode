@@ -427,3 +427,32 @@ def can_complete_circuit(gas, cost)
   end
   return start
 end
+
+def int_to_roman(num)
+  romans = [
+      ["I", 1,],
+      ["IV" , 4],
+      ["V" , 5],
+      ["IX" , 9],
+      ["X" , 10],
+      ["XL" , 40],
+      ["L" , 50],
+      ["XC" , 90],
+      ["C" , 100],
+      ["CD" , 400],
+      ["D" , 500], 
+      ["CM" , 900],
+      ["M" , 1000],
+  ]
+
+  str = ""
+
+  romans.reverse.each do |arr|
+      while num >= arr[-1]
+          str += arr[0]
+          num -= arr[-1]
+      end
+  end
+
+  return str
+end
