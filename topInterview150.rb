@@ -409,3 +409,21 @@ class RandomizedSet
       @set.keys.sample
   end
 end
+
+def can_complete_circuit(gas, cost)
+  if gas.sum < cost.sum
+      return -1
+  end
+  total = 0
+  # start = 0 
+  gas.each_with_index do |g, i|
+      total += (g - cost[i])
+
+      if total < 0 
+          total = 0
+          start = i + 1
+      end
+      
+  end
+  return start
+end
