@@ -520,3 +520,23 @@ def three_sum(nums)
   
   return newArr
 end
+
+def min_sub_array_len(target, nums)
+  if nums.sum < target
+      return 0
+  end
+  minCount = nums.length + 1
+  left = 0 
+  right = 0
+  currentSum = 0 
+  while left <= right && right < nums.length 
+      currentSum += nums[right]
+      while currentSum >= target
+          minCount = [minCount, right - left + 1].min
+          currentSum -= nums[left]
+          left += 1
+      end 
+      right += 1
+  end
+  return minCount 
+end
