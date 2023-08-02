@@ -540,3 +540,26 @@ def min_sub_array_len(target, nums)
   end
   return minCount 
 end
+
+def length_of_longest_substring(s)
+  maxCount = 0
+  left = 0
+  newArr = []
+
+  if s.chars.uniq.length == s.length
+      return s.length
+  end
+
+  s.each_char.with_index do |char, right|
+      if !newArr.include?(char)
+          newArr << char 
+      else
+          maxCount = [maxCount,newArr.length].max
+          idx = newArr.index(char)
+          newArr = newArr.slice(idx + 1.. -1)
+          newArr << char
+          left = right
+      end
+  end
+  return [maxCount, newArr.length].max
+end
