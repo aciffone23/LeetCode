@@ -471,3 +471,52 @@ def two_sum(numbers, target)
       end
   end
 end
+
+def max_area(height)
+  i = 0
+  j = height.length - 1
+  maxArea = 0
+  while i != j
+      distance = ([height[i], height[j]].min * (j - i))
+      if distance > maxArea
+          maxArea = distance
+      end
+      if height[i] > height[j]
+          j -= 1
+      else
+          i += 1
+      end
+  end
+  return maxArea
+end
+
+def three_sum(nums)
+  i = 0
+  nums.sort!
+  newArr = []
+  
+  while i < nums.length - 2
+      j = i + 1
+      k = nums.length - 1
+      
+      while j < k
+          sum = nums[i] + nums[j] + nums[k]
+          
+          if sum == 0
+              newArr << [nums[i], nums[j], nums[k]]
+              j += 1
+              j += 1 while j < k && nums[j] == nums[j - 1]
+              k -= 1 while j < k && nums[k] == nums[k + 1]
+          elsif sum < 0
+              j += 1
+          else
+              k -= 1
+          end
+      end
+      
+      i += 1
+      i += 1 while i < nums.length - 2 && nums[i] == nums[i - 1]
+  end
+  
+  return newArr
+end
