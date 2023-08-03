@@ -607,3 +607,18 @@ def summary_ranges(nums)
   end
   return range
 end
+
+def merge(intervals)
+  intervals.sort!
+  merged = [intervals[0]]
+  
+  intervals[1..].each do |arr|
+      if arr[0] <= merged[-1][1]
+          merged[-1][1] = [merged[-1][1], arr[1]].max
+      else
+          merged << arr
+      end
+  end
+  
+  merged
+end
