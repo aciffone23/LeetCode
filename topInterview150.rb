@@ -591,3 +591,19 @@ def contains_nearby_duplicate(nums, k)
   end
   return false
 end
+
+def summary_ranges(nums)
+  start = nums[0]
+  range = []
+  nums.each_with_index do |num, i|
+      if num + 1 != nums[i + 1]
+          if start != num
+              range << "#{start}->#{num}"
+          else
+              range << "#{start}"
+          end
+          start = nums[i + 1]
+      end
+  end
+  return range
+end
