@@ -578,3 +578,16 @@ def two_sum(nums, target)
       end
   end
 end
+
+def contains_nearby_duplicate(nums, k)
+  hash = {}
+
+  nums.each_with_index do |num, i|
+      if hash.has_key?(num) && i - hash[num] <= k
+          return true
+      else 
+          hash[num] = i  
+      end
+  end
+  return false
+end
