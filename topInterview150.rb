@@ -543,8 +543,8 @@ end
 
 def length_of_longest_substring(s)
   maxCount = 0
-  left = 0
   newArr = []
+  left = 0
 
   if s.chars.uniq.length == s.length
       return s.length
@@ -555,11 +555,26 @@ def length_of_longest_substring(s)
           newArr << char 
       else
           maxCount = [maxCount,newArr.length].max
-          idx = newArr.index(char)
+          while newArr[left] != char
+              newArr[left].pop
+              left += 1
+          end
           newArr = newArr.slice(idx + 1.. -1)
           newArr << char
-          left = right
       end
   end
   return [maxCount, newArr.length].max
+end
+
+def two_sum(nums, target)
+  hash = {}
+
+  nums.each_with_index do |num, i|
+      diff = target - num
+      if hash.has_key?(diff)
+          return i, hash[diff]
+      else
+          hash[num] = i 
+      end
+  end
 end
