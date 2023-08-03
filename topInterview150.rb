@@ -622,3 +622,52 @@ def merge(intervals)
   
   merged
 end
+
+class MinStack
+  def initialize()
+      @arr, @min = [], []
+  end
+
+
+=begin
+  :type val: Integer
+  :rtype: Void
+=end
+  def push(val)
+      @arr.push(val)
+      @min.push(val) if @min.empty? or val <= @min.last
+  end
+
+
+=begin
+  :rtype: Void
+=end
+  def pop()
+      @min.pop if @arr.pop == @min.last
+  end
+
+
+=begin
+  :rtype: Integer
+=end
+  def top()
+      @arr.last
+  end
+
+
+=begin
+  :rtype: Integer
+=end
+  def get_min()
+      @min.last
+  end
+
+
+end
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack.new()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.get_min()
