@@ -671,3 +671,29 @@ end
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.get_min()
+
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} head
+# @return {Boolean}
+def hasCycle(head)
+  return false if !head || !head.next
+
+  tortoise, hare = head, head
+
+  while hare && hare.next
+      tortoise = tortoise.next
+      hare = hare.next.next
+      if tortoise == hare
+          return true
+      end
+  end
+  return false
+end
