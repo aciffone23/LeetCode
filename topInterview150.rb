@@ -778,3 +778,19 @@ def jump(nums)
     end
     return jumps
 end
+
+def product_except_self(nums)
+    newArr = []
+    prefix = 1
+    nums.each_with_index do |num, i|
+        newArr[i] = prefix
+        prefix *= num
+    end
+
+    postfix = 1
+    (nums.length - 1).downto(0) do |i|
+        newArr[i] *= postfix
+        postfix *= nums[i]
+    end 
+    return newArr
+end
