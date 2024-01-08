@@ -732,3 +732,49 @@ def max_depth(root)
 
   depth
 end
+
+def is_same_tree(p, q)
+    if p.nil? && q.nil?
+        return true
+    end
+    if p.nil? || q.nil? || p.val != q.val
+        return false
+    end
+
+    return is_same_tree(p.left, q.left) && is_same_tree(p.right, q.right)
+end
+
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val = 0, left = nil, right = nil)
+#         @val = val
+#         @left = left
+#         @right = right
+#     end
+# end
+# @param {TreeNode} root
+# @return {TreeNode}
+def invert_tree(root)
+    return nil if root == nil 
+
+    root.right, root.left = invert_tree(root.left), invert_tree(root.right)
+
+    root
+end
+
+def jump(nums)
+    jumps = 0 
+    l = r = 0
+
+    while r < nums.length - 1
+        most = 0
+        (l..r).each do |i|
+            most = [most, i + nums[i]].max
+        end
+        l = r + 1
+        r = most
+        jumps += 1
+    end
+    return jumps
+end
