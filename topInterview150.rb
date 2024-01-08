@@ -794,3 +794,21 @@ def product_except_self(nums)
     end 
     return newArr
 end
+
+def candy(ratings)
+    arr = Array.new(ratings.length, 1)
+
+    (1...ratings.length).each do |i|
+        if ratings[i - 1] < ratings[i]
+            arr[i] =  arr[i - 1] + 1
+        end
+    end
+
+    (ratings.length - 2).downto(0).each do |i|
+        if ratings[i] > ratings[i + 1]
+            arr[i] = [arr[i], arr[i + 1] + 1].max
+        end
+    end
+    return arr.sum
+    # return arr
+end
