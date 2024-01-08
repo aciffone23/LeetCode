@@ -812,3 +812,25 @@ def candy(ratings)
     return arr.sum
     # return arr
 end
+
+def trap(height)
+    if height.empty?
+        return 0
+    end
+    l, r = 0, height.length - 1
+    leftMax, rightMax = height[l], height[r]
+    result = 0
+
+    while l < r
+        if leftMax < rightMax
+            l += 1
+            leftMax = [leftMax, height[l]].max
+            result += leftMax - height[l]
+        else
+            r -= 1
+            rightMax = [rightMax, height[r]].max
+            result += rightMax - height[r]
+        end
+    end
+    return result
+end
