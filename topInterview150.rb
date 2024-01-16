@@ -834,3 +834,39 @@ def trap(height)
     end
     return result
 end
+
+def full_justify(words, max_width)
+    result = []
+    line, length = [], 0
+    i = 0
+
+    while i < words.length
+        if length + line.length + words[i].length > max_width
+            extra_space = max_width - length
+            spaces = extra_space / [line.length - 1, 1].max
+            remainder = extra_space % [line.length - 1, 1].max
+
+            line.length.times do |j|
+                if j < line.length - 1 || line.length == 1
+                    line[j] += " " * spaces
+                end
+                if remainder > 0
+                    line[j] += " "
+                    remainder -= 1
+                end
+            end
+            result.append(line.join(""))
+            line, length = [], 0
+        end
+
+        line.append(words[i])
+        length += words[i].length
+        i += 1
+    end
+
+    last_line = line.join(" ")
+    trail_space = [max_width - last_line.length, 0].max
+    last_line += " " * trail_space
+
+    result.append(last_line)
+end
